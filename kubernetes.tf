@@ -57,11 +57,11 @@ resource "kubernetes_deployment" "ibm-rest-api" {
           name  = var.application_name
           env {
             name  = "AWS_ACCESS_KEY_ID"
-            value = env.AWS_ACCESS_KEY_ID
+            value = var.AWS_ACCESS_KEY_ID
           }
           env {
             name  = "AWS_SECRET_ACCESS_KEY"
-            value = env.AWS_SECRET_ACCESS_KEY
+            value = var.AWS_SECRET_ACCESS_KEY
           }
           env {
             name  = "REGION_NAME"
