@@ -1,12 +1,9 @@
-from boto3 import client, resource
+import boto3
 import os
-client = client(
-    'dynamodb'
-)
+session = boto3.session(profile_name='default')
+client = session.client('dynamodb')
 
-resource = resource(
-    'dynamodb'
-)
+resource = session.resource('dynamodb')
 
 def CreateUserTable():
     client.create_table(
