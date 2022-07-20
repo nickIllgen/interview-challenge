@@ -53,7 +53,7 @@ resource "kubernetes_deployment" "ibm-rest-api" {
       }
       spec {
         container {
-          image = "809031430406.dkr.ecr.us-west-2.amazonaws.com"
+          image = "809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api"
           name  = var.application_name
         }
       }
