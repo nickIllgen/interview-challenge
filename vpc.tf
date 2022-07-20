@@ -1,3 +1,29 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.26.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.0.1"
+    }
+  }
+  required_version = ">= 1.1.0"
+
+  # Needed for github actions
+  cloud {
+    organization = "nickillgen"
+
+    workspaces {
+      name = "ibm-rest-api-nick-illgen"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
 variable "region" {
   default     = "us-west-2"
   description = "AWS region"
