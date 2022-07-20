@@ -14,7 +14,7 @@ resource = resource(
     region_name           = os.environ['REGION_NAME'],
 )
 
-def createUserTable():
+def CreateUserTable():
     client.create_table(
         AttributeDefinitions = [
             
@@ -35,7 +35,7 @@ def createUserTable():
     )
 
 UserTable = resource.Table('User')
-def addUser(id, username, email):
+def AddUser(id, username, email):
 
     response = UserTable.put_item(
         Item = {
@@ -47,7 +47,7 @@ def addUser(id, username, email):
     )
     return response
 
-def getUser(id):
+def GetUser(id):
     response = UserTable.get_item(
         Key = {
             'id'    : id
