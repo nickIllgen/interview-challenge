@@ -25,7 +25,7 @@ terraform {
       version = ">= 2.0.1"
     }
   }
-    cloud {
+  cloud {
     organization = "nickillgen"
 
     workspaces {
