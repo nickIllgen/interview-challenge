@@ -35,3 +35,12 @@ data "aws_eks_cluster" "cluster" {
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_id
 }
+data "terraform_remote_state" "vpc" {
+  backend = "remote"
+  config = {
+    organization = "nickillgen"
+    workspaces = {
+      name = "ibm-rest-api-nick-illgen"
+    }
+  }
+}
