@@ -37,7 +37,7 @@ nodeGroups:
     amiFamily: AmazonLinux2
     # ami: auto
     volumeSize: 20
-    availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
+    availabilityZones: ["us-east-2a", "us-east-2b", "us-east-2c"]
     labels:
       nodegroup-type: frontend-workloads
     privateNetworking: true # if only 'Private' subnets are given, this must be enabled
