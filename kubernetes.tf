@@ -12,14 +12,6 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-# Retrieve EKS cluster configuration
-data "aws_eks_cluster" "cluster" {
-  name = data.terraform_remote_state.eks.outputs.cluster_id
-}
-
-data "aws_eks_cluster_auth" "cluster" {
-  name = data.terraform_remote_state.eks.outputs.cluster_id
-}
 
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
