@@ -11,7 +11,8 @@ data "terraform_remote_state" "vpc" {
     }
   }
 }
-
+variable "AWS_SECRET_ACCESS_KEY" {}
+variable "AWS_ACCESS_KEY_ID" {}
 
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
@@ -57,11 +58,11 @@ resource "kubernetes_deployment" "ibm-rest-api" {
           name  = var.application_name
           env {
             name  = "AWS_ACCESS_KEY_ID"
-            value = var.AWS_ACCESS_KEY_ID
+            value = var.aws_access_key_id
           }
           env {
             name  = "AWS_SECRET_ACCESS_KEY"
-            value = var.AWS_SECRET_ACCESS_KEY
+            value = var.aws_secret_access_key
           }
           env {
             name  = "REGION_NAME"
