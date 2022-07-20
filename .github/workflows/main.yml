@@ -46,7 +46,6 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          cd app
           docker build -t ibm-rest-api .
           docker tag ibm-rest-api:latest 809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api:latest
           docker push 809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api:latest
