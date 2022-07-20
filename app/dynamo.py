@@ -17,6 +17,7 @@ resource = resource(
 def createUserTable():
     client.create_table(
         AttributeDefinitions = [
+            
             {
                 'AttributeName' : 'id',
                 'AttributeType' : 'N'
