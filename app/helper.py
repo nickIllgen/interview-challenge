@@ -1,17 +1,11 @@
 from boto3 import client, resource
 import os
 client = client(
-    'dynamodb',
-    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
-    region_name           = os.environ['REGION_NAME'],
+    'dynamodb'
 )
 
 resource = resource(
-    'dynamodb',
-    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
-    region_name           = os.environ['REGION_NAME'],
+    'dynamodb'
 )
 
 def CreateUserTable():
