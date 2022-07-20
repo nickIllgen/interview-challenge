@@ -1,6 +1,5 @@
 import boto3
-import os
-session = boto3.session(profile_name='default')
+session = boto3.Session(profile_name='default')
 client = session.client('dynamodb')
 
 resource = session.resource('dynamodb')
