@@ -16,7 +16,7 @@ jobs:
 
       - name: Change to terraform directory for vpc config
         run: |
-          pwd
+          cd terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
