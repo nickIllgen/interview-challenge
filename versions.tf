@@ -25,6 +25,13 @@ terraform {
       version = ">= 2.0.1"
     }
   }
+    cloud {
+    organization = "nickillgen"
+
+    workspaces {
+      name = "ibm-rest-api-nick-illgen"
+    }
+  }
 
   required_version = ">= 0.14"
 }
