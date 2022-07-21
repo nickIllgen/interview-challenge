@@ -14,7 +14,7 @@ resource = resource(
     region_name           = os.environ['REGION_NAME'],
 )
 
-def createUserTable():
+def CreateUserTable():
     client.create_table(
         AttributeDefinitions = [
             
