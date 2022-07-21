@@ -58,6 +58,9 @@ resource "kubernetes_deployment" "ibm-rest-api" {
             name  = "REGION_NAME"
             value = var.region
           }
+          port {
+            port = 5000
+          }
         }
       }
     }
@@ -74,8 +77,9 @@ resource "kubernetes_service" "ibm-rest-api" {
       app = kubernetes_deployment.ibm-rest-api.metadata[0].labels.app
     }
     port {
-      port        = 8080
-      target_port = 80
+      port        = 5000
+      target_port = 5000
+      node_port = 30008
     }
     type = "LoadBalancer"
   }
