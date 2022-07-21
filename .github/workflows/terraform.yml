@@ -42,12 +42,11 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
           TF_VAR_aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
