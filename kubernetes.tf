@@ -68,7 +68,7 @@ resource "kubernetes_service_account" "ibm-rest-api-sa" {
     name = "ibm-rest-api-sa"
   }
   secret {
-    name = "${kubernetes_secret.example.metadata.0.name}"
+    name = kubernetes_secret.example.metadata.0.name
   }
 }
 resource "kubernetes_service" "ibm-rest-api" {
