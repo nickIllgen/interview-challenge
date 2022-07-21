@@ -6,11 +6,13 @@ variable "application_name" {
   type    = string
   default = "ibm-rest-api"
 }
-variable "AWS_ACCESS_KEY_ID" {
+
+variable "aws-access-key-id" {
   type    = string
   default = ""
 }
-variable "AWS_SECRET_ACCESS_KEY" {
+
+variable "aws-secret-access-key" {
   type    = string
   default = ""
 }
