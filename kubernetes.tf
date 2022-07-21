@@ -55,6 +55,14 @@ resource "kubernetes_deployment" "ibm-rest-api" {
           image = "809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api"
           name  = var.application_name
           env {
+            name  = "AWS_ACCESS_KEY_ID"
+            value = var.aws-access-key-id
+          }
+          env {
+            name  = "AWS_SECRET_ACCESS_KEY"
+            value = var.aws-access-key-id
+          }
+          env {
             name  = "REGION_NAME"
             value = var.region
           }
