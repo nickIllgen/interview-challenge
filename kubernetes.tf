@@ -59,7 +59,7 @@ resource "kubernetes_deployment" "ibm-rest-api" {
             value = var.region
           }
           port {
-            port = 5000
+            concontainer_port = 5000
           }
         }
       }
