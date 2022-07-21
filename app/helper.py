@@ -1,10 +1,9 @@
-from boto3 import client, resource, session
-import os
+import boto3
 
-sesh = session(profile_name='default')
-client = sesh.client('dynamodb')
+session = boto3.Session(profile_name='default')
+client = session.client('dynamodb')
 
-resource = sesh.resource('dynamodb')
+resource = session.resource('dynamodb')
 
 def CreateUserTable():
     client.create_table(
