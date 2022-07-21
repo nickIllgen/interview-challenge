@@ -1,18 +1,10 @@
-from boto3 import client, resource
+from boto3 import client, resource, session
 import os
-client = client(
-    'dynamodb',
-    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
-    region_name           = os.environ['REGION_NAME'],
-)
 
-resource = resource(
-    'dynamodb',
-    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
-    region_name           = os.environ['REGION_NAME'],
-)
+sesh = session(profile_name='default')
+client = sesh.client('dynamodb')
+
+resource = sesh.resource('dynamodb')
 
 def CreateUserTable():
     client.create_table(
