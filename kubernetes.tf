@@ -79,7 +79,7 @@ resource "kubernetes_service" "ibm-rest-api" {
     port {
       port        = 5000
       target_port = 5000
-      node_port = 30008
+      node_port   = 30008
     }
     type = "LoadBalancer"
   }
