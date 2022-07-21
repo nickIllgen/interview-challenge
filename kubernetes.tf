@@ -63,14 +63,7 @@ resource "kubernetes_deployment" "ibm-rest-api" {
     }
   }
 }
-resource "kubernetes_service_account" "ibm-rest-api-sa" {
-  metadata {
-    name = "ibm-rest-api-sa"
-  }
-  secret {
-    name = kubernetes_secret.example.metadata.0.name
-  }
-}
+
 resource "kubernetes_service" "ibm-rest-api" {
   metadata {
     name      = var.application_name
