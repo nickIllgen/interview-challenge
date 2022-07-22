@@ -22,13 +22,6 @@ provider "kubernetes" {
   }
 }
 
-resource "kubernetes_service_account" "tiller_account" {
-  metadata {
-    name      = var.service_account
-    namespace = "kube-system"
-  }
-}
-
 resource "kubernetes_namespace" "ibm-rest-api" {
   metadata {
     name = "ibm-rest-api"
@@ -174,9 +167,9 @@ resource "kubernetes_deployment" "mysql-server" {
             name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
           }
-          volume {
+          volume = {
             name = "mysql-persistent-storage"
-            persistent_volume_claim {
+            persistent_volume_claim = {
               claim_name = "sql-pv-claim"
             }
           }
