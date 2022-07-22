@@ -17,8 +17,8 @@ client = session.client(
 
 resource = session.resource(
     'dynamodb',
-    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
+    aws_access_key_id     = access_key,
+    aws_secret_access_key = secret_key,
     region_name           = os.environ['REGION_NAME'],
 )
 
