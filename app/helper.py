@@ -1,11 +1,28 @@
 import boto3
+import os
+session = boto3.Session()
+credentials = session.get_credentials()
 
-session = boto3.Session(profile_name='default')
-client = session.client('dynamodb')
+credentials = credentials.get_frozen_credentials()
+access_key = credentials.access_key
+secret_key = credentials.secret_key
 
-resource = session.resource('dynamodb')
 
-def CreateUserTable():
+client = session.client(
+    'dynamodb',
+    aws_access_key_id     = access_key,
+    aws_secret_access_key = secret_key,
+    region_name           = os.environ['REGION_NAME'],
+)
+
+resource = session.resource(
+    'dynamodb',
+    aws_access_key_id     = os.environ['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY'],
+    region_name           = os.environ['REGION_NAME'],
+)
+
+def createUserTable():
     client.create_table(
         AttributeDefinitions = [
             
