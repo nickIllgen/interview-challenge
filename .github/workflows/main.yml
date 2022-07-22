@@ -60,4 +60,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         run: |
           docker pull mysql
+          docker tag mysql:latest 809031430406.dkr.ecr.us-west-2.amazonaws.com/mysql:latest
+          docker push 809031430406.dkr.ecr.us-west-2.amazonaws.com/mysql:latest
 
