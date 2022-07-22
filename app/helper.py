@@ -6,7 +6,7 @@ sts_client = boto3.client('sts')
 # Call the assume_role method of the STSConnection object and pass the role
 # ARN and a role session name.
 assumed_role_object=sts_client.assume_role(
-    RoleArn="arn:aws:iam::809031430406:role/ibm-rest-eks-42WN3Awe2022072017423942420000000e",
+    RoleArn="arn:aws:iam::809031430406:role/ibm-api-ec2-instance",
     RoleSessionName="AssumeRoleSession1"
 )
 credentials=assumed_role_object['Credentials']
