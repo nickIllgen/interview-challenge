@@ -24,7 +24,7 @@ provider "kubernetes" {
 
 resource "kubernetes_service_account" "tiller_account" {
   metadata {
-    name = "${var.service_account}"
+    name      = var.service_account
     namespace = "kube-system"
   }
 }
@@ -121,7 +121,7 @@ resource "kubernetes_persistent_volume_claim" "sql-pv-claim" {
   }
   spec {
     storage_class_name = "manual"
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = ["ReadWriteOnce"]
     resources {
       requests = {
         storage = "2Gi"
@@ -154,27 +154,27 @@ resource "kubernetes_deployment" "mysql-server" {
       }
       spec {
         container {
-          image = "809031430406.dkr.ecr.us-west-2.amazonaws.com/mysql"
+          image             = "809031430406.dkr.ecr.us-west-2.amazonaws.com/mysql"
           image_pull_policy = "Never"
-          name  = var.application_name
+          name              = var.application_name
           env {
-            name  = "MYSQL_ROOT_PASSWORD"
+            name = "MYSQL_ROOT_PASSWORD"
             value_from {
               secret_key_ref {
                 name = "ibm-rest-api-secrets"
-                key = "db_root_password"
+                key  = "db_root_password"
               }
             }
           }
           port {
             container_port = 3306
-            name = "db-container"
+            name           = "db-container"
           }
           volume_mount {
-            name = "mysql-persistent-storage"
+            name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
           }
-          volume{
+          volume {
             name = "mysql-persistent-storage"
             persistent_volume_claim {
               claim_name = "sql-pv-claim"
