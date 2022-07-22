@@ -167,7 +167,7 @@ resource "kubernetes_deployment" "mysql-server" {
             name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
           }
-          volume = {
+          volume {
             name = "mysql-persistent-storage"
             persistent_volume_claim = {
               claim_name = "sql-pv-claim"
