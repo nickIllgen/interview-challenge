@@ -171,7 +171,7 @@ resource "kubernetes_deployment" "mysql-server" {
         volume {
           name = "mysql-persistent-storage"
           persistent_volume_claim {
-          claim_name = "sql-pv-claim"
+            claim_name = "sql-pv-claim"
           }
         }
       }
