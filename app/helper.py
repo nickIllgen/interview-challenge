@@ -1,24 +1,28 @@
 import boto3
 import os
-session = boto3.Session()
-credentials = session.get_credentials()
 
-credentials = credentials.get_frozen_credentials()
-access_key = credentials.access_key
-secret_key = credentials.secret_key
+sts_client = boto3.client('sts')
 
-
-client = session.client(
+# Call the assume_role method of the STSConnection object and pass the role
+# ARN and a role session name.
+assumed_role_object=sts_client.assume_role(
+    RoleArn="arn:aws:iam::809031430406:role/ibm-api-ec2-instance",
+    RoleSessionName="AssumeRoleSession1"
+)
+credentials=assumed_role_object['Credentials']
+client = boto3.client(
     'dynamodb',
-    aws_access_key_id     = access_key,
-    aws_secret_access_key = secret_key,
+    aws_access_key_id=credentials['AccessKeyId'],
+    aws_secret_access_key=credentials['SecretAccessKey'],
+    aws_session_token=credentials['SessionToken'],
     region_name           = os.environ['REGION_NAME'],
 )
 
-resource = session.resource(
+resource = boto3.resource(
     'dynamodb',
-    aws_access_key_id     = access_key,
-    aws_secret_access_key = secret_key,
+    aws_access_key_id=credentials['AccessKeyId'],
+    aws_secret_access_key=credentials['SecretAccessKey'],
+    aws_session_token=credentials['SessionToken'],
     region_name           = os.environ['REGION_NAME'],
 )
 
