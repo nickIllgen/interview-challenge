@@ -149,12 +149,12 @@ resource "kubernetes_deployment" "mysql-server" {
         container {
           image             = "809031430406.dkr.ecr.us-west-2.amazonaws.com/mysql"
           image_pull_policy = "Never"
-          name              = var.application_name
+          name              = "mysql"
           env {
             name = "MYSQL_ROOT_PASSWORD"
             value_from {
               secret_key_ref {
-                name = "ibm-rest-api-secrets"
+                name = "flaskapi-secrets"
                 key  = "db_root_password"
               }
             }
