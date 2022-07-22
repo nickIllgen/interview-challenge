@@ -38,7 +38,6 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      # Todo: add tests
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
@@ -53,3 +52,12 @@ jobs:
           docker build -t ibm-rest-api .
           docker tag ibm-rest-api:latest 809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api:latest
           docker push 809031430406.dkr.ecr.us-west-2.amazonaws.com/ibm-rest-api:latest
+
+      - name: Pull mysql image to ECR
+        id: build persistent storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+        run: |
+        docker pull mysql
+
